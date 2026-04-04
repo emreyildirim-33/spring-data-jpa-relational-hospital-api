@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.print.Doc;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -15,9 +17,27 @@ public class Operation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "patient_id")
-    private long patientId;
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
 
-    @Column(name = "doctor_id")
-    private long doctorId;
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    private  Patient patient;
+
+    public void setPatientId(long patientId) {
+        Patient p = new Patient();
+        p.setId(patientId);
+        this.patient = p;
+    }
+
+    public void setDoctorId(long doctorId) {
+        Doctor d = new Doctor();
+        d.setId(doctorId);
+        this.doctor = d;
+    }
+
+    public long getDoctorId() {
+        return (this.doctor != null) ? this.doctor.getId(): 0;
+    }
 }
