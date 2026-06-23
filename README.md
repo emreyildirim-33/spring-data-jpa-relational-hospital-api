@@ -2,13 +2,13 @@
 
 A Java and Spring Boot project focused on relational database modeling, Spring Data JPA, PostgreSQL, entity relationships, and foreign key mapping in a hospital management domain.
 
-The project models a basic hospital/surgery system with doctors, nurses, patients, surgeries, and operations.
+The project models a basic hospital and surgery system with doctors, nurses, patients, surgeries, and operations.
 
 ## Overview
 
-This project was developed as a hands-on backend and database modeling project.
+This project was developed to strengthen relational database modeling skills and demonstrate how connected domain models can be represented in a Spring Boot and PostgreSQL environment.
 
-The main goal was to practice designing relational database structures, creating connected domain models, and understanding how foreign key relationships work in a Spring Boot and PostgreSQL environment.
+The main goal was to design a multi-table relational structure, define entity relationships, and understand how foreign key connections work between hospital-related records.
 
 The application includes hospital-related entities such as:
 
@@ -18,7 +18,7 @@ The application includes hospital-related entities such as:
 * `Surgery`
 * `Operation`
 
-The project focuses on relational schema design, entity relationships, and multi-table data modeling.
+The project focuses on relational schema design, entity relationships, multi-table data modeling, and database-backed backend structure.
 
 ## Tech Stack
 
@@ -32,7 +32,7 @@ The project focuses on relational schema design, entity relationships, and multi
 * Entity relationship modeling
 * Foreign key mapping
 
-## Core Concepts Practiced
+## Core Concepts
 
 * Relational database schema design
 * Spring Data JPA setup
@@ -129,7 +129,7 @@ The `operation` table connects doctors and patients.
 | `surgery`   | Stores surgery records with doctor, nurse, and patient relationships |
 | `operation` | Stores operation records with doctor and patient relationships       |
 
-## What I Practiced
+## What This Project Demonstrates
 
 * Designing relational tables
 * Using primary keys and foreign keys
@@ -193,9 +193,9 @@ Run the project:
 
 ## Notes
 
-This project was built as a backend/database training project focused on relational schema design, foreign key relationships, Spring Data JPA, and PostgreSQL integration.
+This project focuses on relational schema design, foreign key relationships, Spring Data JPA, and PostgreSQL integration in a hospital-domain database scenario.
 
-The main focus was not building a full production hospital management system, but practicing relational database modeling and backend persistence concepts.
+The main purpose is to demonstrate relational database modeling and backend persistence concepts rather than building a full production hospital management system.
 
 ## Repository
 
