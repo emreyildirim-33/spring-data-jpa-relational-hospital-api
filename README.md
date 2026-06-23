@@ -1,40 +1,202 @@
-# SQL Sorgu Alıştırmaları
+# Spring Data JPA Relational Hospital API
 
-Bu hafta SQL sorguları üzerine çalışıyorsunuz. Bugünkü alıştırmada sizin için hazırladığımız veritabanında aşağıda istediğimiz sonuçları elde etmenize yarayan SQL sorgularını oluşturacaksınız.
+A Java and Spring Boot project focused on relational database modeling, Spring Data JPA, PostgreSQL, entity relationships, and foreign key mapping in a hospital management domain.
 
-# Proje Kurulumu
-Projeyi forklayın ve clonlayın. Tamamladığınızda da pushlayın.
+The project models a basic hospital/surgery system with doctors, nurses, patients, surgeries, and operations.
 
-## Kütüphane Bilgi Sistemi
+## Overview
 
-* Spring Data Jpa ve Postgresql driver dependencyleri sisteme ekleyiniz.
-Veri tabanına bağlanabilmek için :
-* `application.properties` dosyasında `spring.datasource.username` karşısına veritabanını bağlanmak için kullandığınız kullanıcı ismini MUTLAKA GİRİNİZ.
-* `application.properties` dosyasında `spring.datasource.password` karşısına veritabanını bağlanmak için kullandığınız şifreyi MUTLAKA GİRİNİZ.
+This project was developed as a hands-on backend and database modeling project.
 
-### Görevler
+The main goal was to practice designing relational database structures, creating connected domain models, and understanding how foreign key relationships work in a Spring Boot and PostgreSQL environment.
 
-	1) Veri tabanınız içerisinde doctor adında bir tablo oluşturun. 
-		Tabloda(id: bigint, name: character varying, surname: character varying, proficiency: character varying) kolonları olmalıdır.
-        id kolonu PRİMARY KEY ve auto-increment olmalıdır.	
+The application includes hospital-related entities such as:
 
-	2) Veri tabanınız içerisinde nurse adında bir tablo oluşturun. 
-		Tabloda(id: bigint, name: character varying, surname: character varying, proficiency: character varying) kolonları olmalıdır.
-        id kolonu PRİMARY KEY ve auto-increment olmalıdır.
+* `Doctor`
+* `Nurse`
+* `Patient`
+* `Surgery`
+* `Operation`
 
-	3) Veri tabanınız içerisinde patient adında bir tablo oluşturun.
-		Tabloda(id: bigint, name: character varying, surname: character varying, email: character varying, complaint: text) kolonları olmalıdır.
-        id kolonu PRİMARY KEY ve auto-increment olmalıdır.	
+The project focuses on relational schema design, entity relationships, and multi-table data modeling.
 
-	4) Veri tabanınız içerisinde surgery adında bir tablo oluşturun.
-	    Tabloda(id: bigint, nurse_id: bigint, patient_id: bigint, doctor_id: bigint) kolonları olmalıdır.
-        id kolonu PRİMARY KEY ve auto-increment olmalıdır.
-		Bu tabloda nurse_id, patient_id ve doctor_id foreign key olmalıdır.
+## Tech Stack
 
-	5) Veri tabanınız içerisinde operation adında bir tablo oluşturun.
-         Tabloda(id: bigint, patient_id: bigint, doctor_id: bigint) kolonları olmalıdır.
-         id kolonu PRİMARY KEY ve auto-increment olmalıdır.
-         Bu tabloda patient_id ve doctor_id foreign key olmalıdır.
+* Java
+* Spring Boot
+* Spring Data JPA
+* Hibernate
+* PostgreSQL
+* Maven
+* Relational database design
+* Entity relationship modeling
+* Foreign key mapping
 
+## Core Concepts Practiced
 
+* Relational database schema design
+* Spring Data JPA setup
+* PostgreSQL integration
+* Entity modeling
+* Primary key usage
+* Foreign key relationships
+* Multi-table relational structures
+* Hospital domain modeling
+* Database-backed application structure
 
+## Domain Model
+
+### Doctor
+
+Represents a doctor in the hospital system.
+
+Main fields:
+
+* `id`
+* `name`
+* `surname`
+* `proficiency`
+
+### Nurse
+
+Represents a nurse in the hospital system.
+
+Main fields:
+
+* `id`
+* `name`
+* `surname`
+* `proficiency`
+
+### Patient
+
+Represents a patient in the hospital system.
+
+Main fields:
+
+* `id`
+* `name`
+* `surname`
+* `email`
+* `complaint`
+
+### Surgery
+
+Represents a surgery record connected to a nurse, patient, and doctor.
+
+Main fields:
+
+* `id`
+* `nurse_id`
+* `patient_id`
+* `doctor_id`
+
+### Operation
+
+Represents an operation record connected to a patient and doctor.
+
+Main fields:
+
+* `id`
+* `patient_id`
+* `doctor_id`
+
+## Relationship Structure
+
+```text
+Doctor
+  ├── Surgery
+  └── Operation
+
+Patient
+  ├── Surgery
+  └── Operation
+
+Nurse
+  └── Surgery
+```
+
+The `surgery` table connects doctors, nurses, and patients.
+The `operation` table connects doctors and patients.
+
+## Database Tables
+
+| Table       | Purpose                                                              |
+| ----------- | -------------------------------------------------------------------- |
+| `doctor`    | Stores doctor information                                            |
+| `nurse`     | Stores nurse information                                             |
+| `patient`   | Stores patient information                                           |
+| `surgery`   | Stores surgery records with doctor, nurse, and patient relationships |
+| `operation` | Stores operation records with doctor and patient relationships       |
+
+## What I Practiced
+
+* Designing relational tables
+* Using primary keys and foreign keys
+* Modeling hospital-related database entities
+* Understanding multi-table relationships
+* Connecting Spring Boot with PostgreSQL
+* Working with Spring Data JPA
+* Creating database-backed domain models
+* Structuring relational data for backend applications
+
+## Project Structure
+
+```text
+src/
+ └── main/
+     ├── java/
+     │   └── ...
+     │       ├── entity/
+     │       ├── repository/
+     │       └── ...
+     └── resources/
+         └── application.properties
+```
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+* Java 17+
+* Maven
+* PostgreSQL
+* IntelliJ IDEA or another Java IDE
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/emreyildirim-33/spring-data-jpa-relational-hospital-api.git
+cd spring-data-jpa-relational-hospital-api
+```
+
+Configure your database connection in `application.properties`.
+
+Example:
+
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/your_database
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+spring.jpa.hibernate.ddl-auto=update
+```
+
+Run the project:
+
+```bash
+./mvnw spring-boot:run
+```
+
+## Notes
+
+This project was built as a backend/database training project focused on relational schema design, foreign key relationships, Spring Data JPA, and PostgreSQL integration.
+
+The main focus was not building a full production hospital management system, but practicing relational database modeling and backend persistence concepts.
+
+## Repository
+
+GitHub: https://github.com/emreyildirim-33/spring-data-jpa-relational-hospital-api
